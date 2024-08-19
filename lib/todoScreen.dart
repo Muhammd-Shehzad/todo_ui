@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_storage/get_storage.dart';
 
 class ToDoScreen extends StatefulWidget {
   ToDoScreen({super.key});
@@ -11,9 +12,9 @@ class ToDoScreen extends StatefulWidget {
 }
 
 class _ToDoScreenState extends State<ToDoScreen> {
-  bool ischeck = false;
+  final db = GetStorage();
 
-  List<String> namaz = ['Fajar', 'Zuhar', 'Asar', 'Magrab', 'Asia'];
+  bool ischeck = false;
 
   @override
   Widget build(BuildContext context) {
@@ -67,97 +68,47 @@ class _ToDoScreenState extends State<ToDoScreen> {
           //     ),
           //   ),
           // )
-          Expanded(
-            child: ListView.builder(
-              itemCount: namaz.length,
-              itemBuilder: ((context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Container(
-                    height: 80.h,
-                    width: 300.w,
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Row(
-                      children: [
-                        Checkbox(
-                            value: ischeck,
-                            onChanged: (v) {
-                              setState(() {
-                                ischeck = v!;
-                              });
-                            }),
-                        SizedBox(
-                          width: 20.w,
-                        ),
-                        Text(
-                          namaz[index],
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              }),
-            ),
-          ),
+          // Expanded(
+          //   child: ListView.builder(
+          //     itemCount: namaz.length,
+          //     itemBuilder: ((context, index) {
+          //       return Padding(
+          //         padding: const EdgeInsets.all(20),
+          //         child: Container(
+          //           height: 80.h,
+          //           width: 300.w,
+          //           decoration: BoxDecoration(
+          //             color: Colors.grey,
+          //             borderRadius: BorderRadius.circular(10),
+          //           ),
+          //           child: Row(
+          //             children: [
+          //               Checkbox(
+          //                   value: ischeck,
+          //                   onChanged: (v) {
+          //                     setState(() {
+          //                       ischeck = v!;
+          //                     });
+          //                   }),
+          //               SizedBox(
+          //                 width: 20.w,
+          //               ),
+          //               Text(
+          //                 namaz[index],
+          //                 style: TextStyle(
+          //                     color: Colors.black,
+          //                     fontSize: 18.sp,
+          //                     fontWeight: FontWeight.w400),
+          //               ),
+          //             ],
+          //           ),
+          //         ),
+          //       );
+          //     }),
+          //   ),
+          // ),
           SizedBox(
             height: 20.h,
-          ),
-          Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    height: 50.h,
-                    width: 150.w,
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Save',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 20.sp,
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    height: 50.h,
-                    width: 150.w,
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Delete',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
           ),
         ],
       ),
