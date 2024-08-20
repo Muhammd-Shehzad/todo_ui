@@ -32,19 +32,15 @@ class _ToDoScreenState extends State<ToDoScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+          Center(
             child: Text(
               'To-Day',
               style: TextStyle(color: Colors.white),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
-              '18 Aug 2024',
-              style: TextStyle(color: Colors.white),
-            ),
+          Text(
+            '18 Aug 2024',
+            style: TextStyle(color: Colors.white),
           ),
           // ...namaz.map(
           //   (e) => Container(
@@ -109,6 +105,32 @@ class _ToDoScreenState extends State<ToDoScreen> {
           // ),
           SizedBox(
             height: 20.h,
+          ),
+          InkWell(
+            onTap: () {
+              showBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return Container(
+                      height: 300.h,
+                      child: Text('hello world'),
+                    );
+                  });
+            },
+            child: Container(
+              height: 50.h,
+              width: 100.w,
+              decoration: BoxDecoration(color: Colors.blueGrey),
+              child: Center(
+                child: Text(
+                  'ADD',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
           ),
         ],
       ),
